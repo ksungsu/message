@@ -18,26 +18,26 @@ public class MessageSourceTest {
     MessageSource ms;
 
     @Test
-    void helloMessage() {
+    void helloMessage(){
         String result = ms.getMessage("hello", null, null);
         assertThat(result).isEqualTo("안녕");
     }
 
     @Test
-    void notFoundMessageCode() {
+    void notFoundMessageCode(){
         assertThatThrownBy(() -> ms.getMessage("no_code", null, null))
                 .isInstanceOf(NoSuchMessageException.class);
     }
 
     @Test
-    void notFoundMessageCodeDefaultMessage() {
+    void notFoundMessageCodeDefaultMessage(){
         String result = ms.getMessage("no_code", null, "기본 메시지", null);
         assertThat(result).isEqualTo("기본 메시지");
     }
 
     @Test
-    void argumentMessage() {
-        String message = ms.getMessage("hello.name", new Object[]{"Spring"}, null);
+    void argumentMessage(){
+        String message = ms.getMessage("hello.name", new Object[]{"String"}, null);
         assertThat(message).isEqualTo("안녕 Spring");
     }
 
